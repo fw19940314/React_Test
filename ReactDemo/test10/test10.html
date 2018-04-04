@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React表单</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    var MyComponent = React.createClass({
+    getInitialState: function(){
+      return{
+        username: '',
+        checked: true,
+        gender: 'man'
+      }
+    },
+    changeHandle: function(name,event){
+     var newState={};
+     newState[name]=name=="checked"?event.target.checked:event.target.value;
+     this.setState(newState);
+     console.log(newState)
+    },
+    submitHandle: function(e){
+      e.preventDefault();
+      var is = this.state.checked?'是':'不是';
+      var gender = this.state.gender=='man'?'男':'女';
+      alert(this.state.username+is+gender)
+    },
+    render: function() {
+     return (
+       <form onSubmit={this.submitHandle}>
+         <label htmlFor="username">请输入：</label>
+         <input type="text" name="username" id="username" onChange={this.changeHandle.bind(this,"username")} value={this.state.username}/><br/>
+         <label htmlFor="checkbox">是否：</label>
+         <input type="checkbox" name="chencked" id="checked" onChange={this.changeHandle.bind(this,"checked")} checked={this.state.checked}/><br/>
+         <label htmlFor="gender">请选择：</label>
+         <select name="gender" onChange={this.changeHandle.bind(this,"gender")} value={this.state.gender}>
+           <option value="man">男</option>
+           <option value="woman">女</option>
+         </select><br/>
+         <button type="submit">提交</button>
+       </form>
+    );
+  }
+});
+
+ReactDOM.render(
+  <MyComponent />,
+  document.getElementById('example')
+);
+    </script>
+  </body>
+</html>

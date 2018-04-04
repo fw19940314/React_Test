@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React 校验设置默认值</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    var PropsType = React.createClass({
+      /*设置PropType属性，校验*/
+      propTypes: {
+        title: React.PropTypes.string.isRequired,
+        },
+      /*设置默认值*/
+      getDefaultProps: function(){
+        return {title: 'Hello React'} 
+      },
+        render: function() {
+          return (
+             <p>
+              {this.props.title}
+              </p>
+          );
+        }
+      });
+      let data = '123'
+      ReactDOM.render(
+        <PropsType title = {data}/>,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>

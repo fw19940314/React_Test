@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Demo</title>
+</head>
+<script src="../build/react.js"></script>
+<script src="../build/react-dom.js"></script>
+<script src="../build/browser.min.js"></script>
+<body>
+    <div id="constance"></div>
+    <script type="text/babel">
+    var Hellocomponent = React.createClass({
+        render:function() {
+            return <h1>你好</h1>
+        }
+
+    });
+     ReactDOM.render(
+        <Hellocomponent/>,
+        document.getElementById('constance')
+      );
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React 表单可控</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+    var MyComponent = React.createClass({
+    getInitialState: function(){
+      return{
+        value: 'hello'
+      }
+    },
+    handleChange: function(event){
+        this.setState({value:event.target.value})
+    },
+    render: function() {
+     return (
+       <input type="text" onChange={this.handleChange} value={this.state.value}/>
+    );
+  }
+});
+
+ReactDOM.render(
+  <MyComponent />,
+  document.getElementById('example')
+);
+    </script>
+  </body>
+</html>

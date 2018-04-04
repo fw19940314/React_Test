@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React组件生命周期</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var LifeCycle = React.createClass({
+        getInitialState: function() {
+              return {count:1};
+          },
+        componentWillMount: function(){
+            console.log('1.componentWillMount')
+        },
+        componentDidMount: function(){
+            console.log('2.componentDidMount')
+        },
+        componentWillUpdate: function(){
+            console.log('3.componentWillUpdate：')
+        },
+        componentDidUpdate: function(){
+            console.log('4.componentDidUpdate：')
+        },
+        componentWillUnmount: function(){
+            console.log('5.componentWillUnmount')
+        },
+        HandleClick: function(){
+            this.setState({count:this.state.count+1})
+        },
+        render: function() {
+          return (
+              <p>
+              {this.state.count}
+              <button onClick={this.HandleClick}>AddCount</button>
+              </p>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <LifeCycle />,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
