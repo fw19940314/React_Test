@@ -1,2 +1,2 @@
 # React_Test
-*React 测试代码*
+* React 测试代码
